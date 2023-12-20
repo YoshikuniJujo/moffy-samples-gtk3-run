@@ -5,7 +5,7 @@ cabal-version: 2.2
 -- see: https://github.com/sol/hpack
 
 name:           moffy-samples-gtk3-run
-version:        0.1.0.0
+version:        0.1.0.2
 synopsis:       Package to run moffy samples - GTK3 version
 description:    Please see the README on GitHub at <https://github.com/YoshikuniJujo/moffy-samples-gtk3-run#readme>
 category:       Control
