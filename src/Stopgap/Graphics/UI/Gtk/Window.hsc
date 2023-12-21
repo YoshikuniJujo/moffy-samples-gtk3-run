@@ -39,9 +39,3 @@ close :: W -> IO ()
 close = c_gtk_window_close
 
 foreign import ccall "gtk_window_close" c_gtk_window_close :: W -> IO ()
-
-getWindow :: W -> IO Gdk.Window.W
-getWindow = c_gtk_window_get_window
-
-foreign import ccall "gtk_window_get_window" c_gtk_window_get_window ::
-	W -> IO Gdk.Window.W

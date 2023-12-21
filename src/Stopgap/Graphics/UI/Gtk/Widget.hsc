@@ -6,6 +6,7 @@ module Stopgap.Graphics.UI.Gtk.Widget where
 import Foreign.Ptr
 import Stopgap.System.GLib.Object qualified as G.Object
 import Stopgap.Graphics.UI.Gdk.Event qualified as Gdk.Event
+import Stopgap.Graphics.UI.Gdk.Window qualified as Gdk.Window
 
 class G.Object.IsO w => IsW w where toW :: w -> W
 
@@ -24,8 +25,14 @@ addEvents = c_gtk_widget_add_events . toW
 foreign import ccall "gtk_widget_add_events" c_gtk_widget_add_events ::
 	W -> Gdk.Event.Mask -> IO ()
 
-queueDraw :: IsW w => w ->IO ()
+queueDraw :: IsW w => w -> IO ()
 queueDraw = c_gtk_widget_queue_draw . toW
 
 foreign import ccall "gtk_widget_queue_draw" c_gtk_widget_queue_draw ::
 	W -> IO ()
+
+getWindow :: IsW w => w -> IO Gdk.Window.W
+getWindow = c_gtk_widget_get_window . toW
+
+foreign import ccall "gtk_widget_get_window" c_gtk_widget_get_window ::
+	W -> IO Gdk.Window.W

@@ -135,7 +135,7 @@ runSingleWin cer ceo cv = do
 		Stopped -> void $ G.idleAdd
 			(\_ -> do
 				Gtk.Window.close w
-				Gdk.Window.destroy =<< Gtk.Window.getWindow w
+				Gdk.Window.destroy =<< Gtk.Widget.getWindow w
 				Gtk.mainQuit
 				pure False)
 			Null
