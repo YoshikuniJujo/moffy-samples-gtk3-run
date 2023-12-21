@@ -101,7 +101,7 @@ runSingleWin cer ceo cv = do
 	join $ Gtk.init <$> getProgName <*> getArgs
 
 	w <- Gtk.Window.new Gtk.Window.Toplevel
-	G.Signal.connect_ab_bool w "delete" deleteHandle Null
+	G.Signal.connect_ab_bool w "delete-event" deleteHandle Null
 	G.Signal.connect_void_void w "destroy" Gtk.mainQuit Null
 
 	da <- Gtk.DrawingArea.new
