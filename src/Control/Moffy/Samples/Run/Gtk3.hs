@@ -110,7 +110,8 @@ runSingleWin cer ceo cv = do
 	Gtk.Widget.addEvents da $
 		Gdk.Event.ButtonPressMask .|.
 		Gdk.Event.ButtonReleaseMask .|.
-		Gdk.Event.ButtonMotionMask
+		Gdk.Event.ButtonMotionMask .|.
+		Gdk.Event.PointerMotionMask
 	G.Signal.connect_self_button_ud
 		da "button-press-event" (clicked ceo) Null
 	G.Signal.connect_self_button_ud
