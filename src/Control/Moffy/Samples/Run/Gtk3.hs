@@ -89,6 +89,9 @@ mousePoint eb = (Gdk.Event.Button.bX eb, Gdk.Event.Button.bY eb)
 movePoint :: Gdk.Event.Motion.M -> Point
 movePoint em = (Gdk.Event.Motion.mX em, Gdk.Event.Motion.mY em)
 
+deleteHandle :: a -> b -> IO Bool
+deleteHandle x y = pure False
+
 runSingleWin ::
 	TChan (EvReqs Events) -> TChan (EvOccs Events) -> TChan View -> IO ()
 runSingleWin cer ceo cv = do
@@ -98,6 +101,7 @@ runSingleWin cer ceo cv = do
 	join $ Gtk.init <$> getProgName <*> getArgs
 
 	w <- Gtk.Window.new Gtk.Window.Toplevel
+	G.Signal.connect_ab_bool w "delete" deleteHandle Null
 	G.Signal.connect_void_void w "destroy" Gtk.mainQuit Null
 
 	da <- Gtk.DrawingArea.new
