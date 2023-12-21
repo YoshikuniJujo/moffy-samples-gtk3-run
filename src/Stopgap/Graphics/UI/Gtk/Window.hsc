@@ -13,6 +13,7 @@ import Stopgap.Data.Ptr
 import Stopgap.System.GLib.Object qualified as G.Object
 import Stopgap.Graphics.UI.Gtk.Widget qualified as Widget
 import Stopgap.Graphics.UI.Gtk.Container qualified as Container
+import Stopgap.Graphics.UI.Gdk.Window qualified as Gdk.Window
 
 #include <gtk/gtk.h>
 
@@ -38,3 +39,9 @@ close :: W -> IO ()
 close = c_gtk_window_close
 
 foreign import ccall "gtk_window_close" c_gtk_window_close :: W -> IO ()
+
+getWindow :: W -> IO Gdk.Window.W
+getWindow = c_gtk_window_get_window
+
+foreign import ccall "gtk_window_get_window" c_gtk_window_get_window ::
+	W -> IO Gdk.Window.W

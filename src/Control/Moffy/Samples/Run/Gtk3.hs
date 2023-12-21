@@ -48,6 +48,7 @@ import Stopgap.Graphics.UI.Gtk.DrawingArea qualified as Gtk.DrawingArea
 import Stopgap.Graphics.UI.Gdk.Event qualified as Gdk.Event
 import Stopgap.Graphics.UI.Gdk.Event.Button qualified as Gdk.Event.Button
 import Stopgap.Graphics.UI.Gdk.Event.Motion qualified as Gdk.Event.Motion
+import Stopgap.Graphics.UI.Gdk.Window qualified as Gdk.Window
 
 type Events = CalcTextExtents :-
 	Mouse.Move :- Mouse.Down :- Mouse.Up :- Singleton DeleteEvent
@@ -132,7 +133,11 @@ runSingleWin cer ceo cv = do
 
 	forkIO . forever $ atomically (readTChan cv) >>= \case
 		Stopped -> void $ G.idleAdd
-			(\_ -> Gtk.Window.close w >> Gtk.mainQuit >> pure False)
+			(\_ -> do
+				Gtk.Window.close w
+				Gdk.Window.destroy =<< Gtk.Window.getWindow w
+				Gtk.mainQuit
+				pure False)
 			Null
 		View v -> do
 			atomically $ writeTVar crd v
