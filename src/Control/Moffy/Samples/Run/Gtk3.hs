@@ -128,7 +128,8 @@ runSingleWin cer ceo cv = do
 
 	forkIO . forever $ atomically (readTChan cv) >>= \case
 		Stopped -> void $ G.idleAdd
-			(\_ -> Gtk.mainQuit >> pure False) Null
+			(\_ -> Gtk.Window.close w >> Gtk.mainQuit >> pure False)
+			Null
 		View v -> do
 			atomically $ writeTVar crd v
 			void $ G.idleAdd

@@ -33,3 +33,8 @@ new :: Type -> IO W
 new = c_gtk_window_new
 
 foreign import ccall "gtk_window_new" c_gtk_window_new :: Type -> IO W
+
+close :: W -> IO ()
+close = c_gtk_window_close
+
+foreign import ccall "gtk_window_close" c_gtk_window_close :: W -> IO ()
