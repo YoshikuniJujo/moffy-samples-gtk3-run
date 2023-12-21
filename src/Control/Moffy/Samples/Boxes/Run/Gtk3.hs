@@ -33,7 +33,7 @@ import Control.Moffy.Samples.Boxes.Viewable
 
 import Control.Moffy.Samples.Run.Gtk3
 
-runBoxes bxs = runBoxes_ $ boxesToView <$%> (emit [] >> bxs)
+runBoxes bxs = runBoxes_ $ boxesToView <$%> (emit [] >> bxs) >> emit V.Stopped
 
 runBoxes_ :: forall s es r . (
 	Adjustable
