@@ -3,10 +3,24 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: moffy-samples-events-0.2.2.5@sha256:220f167c20e5af70b149b6918dd6677bc7f91e1404a3d0c0de1168b651772167,3194
+    pantry-tree:
+      sha256: e0145b794d01fa27a941b6401c4cb1660e39034d000cf13b5033eff89e65e52c
+      size: 2065
+  original:
+    hackage: moffy-samples-events-0.2.2.5
+- completed:
+    hackage: simple-pango-0.1.0.1@sha256:6dec5ff59e637364e2051e90eaf7ec4d7aea9d2023c3b0af0627950fa755162d,3504
+    pantry-tree:
+      sha256: 184ed5e202ba8faeef8e2fb7e5354f794c7087942f8d5a8ace4b24fa4416db9d
+      size: 3575
+  original:
+    hackage: simple-pango-0.1.0.1
 snapshots:
 - completed:
-    sha256: e5e4120f8ad44cbb340a6f506029ea99f4bceeda0a02395687346b09e7e03352
-    size: 712151
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/nightly/2023/12/19.yaml
-  original: nightly-2023-12-19
+    sha256: 5362057cb009c3df7b588bcb37ade11ffeecf2feb056dae9b418116680117383
+    size: 529494
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/nightly/2024/1/3.yaml
+  original: nightly-2024-01-03
